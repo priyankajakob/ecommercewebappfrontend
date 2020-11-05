@@ -108,7 +108,7 @@ const Signin = ()=>{
                             <label className="text-light">Password</label>
                             <input className="form-control" type="password" name="password" value={password} onChange={handleChange}/>
                         </div>
-                        <button className="btn-success btn-block" onClick={handleSubmit}>
+                        <button className=" btn btn-success btn-block" onClick={handleSubmit}>
                             Submit
                         </button>
                     </form>
