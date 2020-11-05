@@ -35,11 +35,14 @@ const Nav = ({history})=>{
                     </Link>
                 </li>
 
-                <li className="nav-item">
-                    <Link style={currentTab(history,"/admin/dashboard")} className="nav-link" to="/admin/dashboard">
-                        Admin Dashboard
-                    </Link>
-                </li>
+                {/* We don't want to show "Admin Dashboard" for non-admin users in nav bar that's why below is added, AD page access is anyway not allowed via condition written in signin component */}
+                {isAuthenticated() && isAuthenticated().user.role == 1 && (
+                     <li className="nav-item">
+                        <Link style={currentTab(history,"/admin/dashboard")} className="nav-link" to="/admin/dashboard">
+                            Admin Dashboard
+                        </Link>
+                     </li>
+                ) }
 
                 {
                     !isAuthenticated() && (
