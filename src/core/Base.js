@@ -4,8 +4,7 @@ import Nav from './Nav'
 
 const Base = (props)=>{
 
-   const { title, description, children} = props
-   const className = "bg-dark text-white p-4"
+   const { title, description, children, className} = props
 
     return(
         <div>
