@@ -69,14 +69,16 @@ const Signin = ()=>{
    const loadingMessage = ()=>{
        return(
            loading && (
-               <div className="alert alert-info">
-                   <h2>
-                       Loading...
-                   </h2>
-               </div>
-           )
-       )
-   }
+            <div className="row">
+            <div className="col-md-6 offset-sm-3 text-left">
+              <div
+                className="alert alert-info">
+                Loading...
+              </div>
+            </div>
+          </div>
+        )
+       )}
 
 
    const errorMessage = () => {
