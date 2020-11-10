@@ -67,7 +67,6 @@ export const createProduct = (token,product)=>{
         method:"POST",
         headers : {
             Accept: "application/json",
-            'Content-Type': false,
             "x-auth":token
         },
         body:product
