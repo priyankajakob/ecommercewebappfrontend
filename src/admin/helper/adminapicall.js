@@ -66,7 +66,8 @@ export const createProduct = (token,product)=>{
     return fetch(`${API}/products`,{
         method:"POST",
         headers : {
-            Accept:"application/json",
+            Accept: "application/json",
+            'Content-Type': false,
             "x-auth":token
         },
         body:product
@@ -97,7 +98,7 @@ export const listUniqueProductCategories = () => {
     .catch((err)=>{return {error:"Issue connecting to server"}})
 }
 
-export const getAProduct = (productId) => {
+export const getOneProduct = (productId) => {
     return fetch(`${API}/products/${productId}`,{
         method:"GET"
     })

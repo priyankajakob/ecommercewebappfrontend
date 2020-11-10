@@ -2,9 +2,14 @@ import React from 'react'
 
 import Nav from './Nav'
 
-const Base = (props)=>{
+const Base = ({
+  title = "My Title",
+  description = "My desription",
+  className = "bg-dark text-white p-4",
+  children
+})=>{
 
-   const { title, description, children, className} = props
+   //const { title, description, children, className} = props
 
     return(
         <div>
