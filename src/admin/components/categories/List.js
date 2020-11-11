@@ -2,7 +2,8 @@ import React,{useState,useEffect} from 'react'
 import Base from '../../../core/Base'
 import { Link } from 'react-router-dom'
 
-import { listCategories, deleteCategory } from '../../helper/adminapicall'
+import { listCategories, deleteCategory} from '../../helper/adminapicall'
+import {isAuthenticated} from '../../../auth/helper/index'
 
 const ManageCategories = ()=>{
 
@@ -12,11 +13,9 @@ const ManageCategories = ()=>{
         success:false
     })
 
-    const {categories,error,success}=values
+    const { categories,error,success }=values
 
-    const deleteCategoryCall = (id)=>{
-        console.log("hit here",id)
-    }
+    const { token } = isAuthenticated()
 
     const preLoad = ()=>{
         listCategories()
@@ -57,6 +56,34 @@ const ManageCategories = ()=>{
         );
       };
 
+    const deleteCategoryCall = (categoryId)=>{
+        deleteCategory(token,categoryId)
+        .then((data)=>{
+            if(data.error){
+                setValues({...values,error:data.error})
+            }
+            else{
+                setValues({
+                    ...values,
+                    error:false
+                })
+                preLoad()
+                console.log("category deleted successfully")
+            }
+        })
+        .catch((error)=>console.log(error))
+     }
+
+      const adminHome = ()=>{
+        return(
+            <div className="mt-5">
+                <Link className="btn btn-sm btn-info mb-3" to="/admin/dashboard">
+                    Go back to Admin Home
+                </Link>
+            </div>
+        )
+    }
+
     return(
         <Base 
         title="Manage Categories here" 
@@ -64,6 +91,7 @@ const ManageCategories = ()=>{
         className="container">
             {/* <p className="text-white">Manage Categories Page</p> */}
             <h4 className="text-success font-weight-bold">{`Total Categories fetched : ${categories.length} `}</h4>
+            {adminHome()}
             <br/>
             {success && (
                 <table className="table table-bordered bg-white">
@@ -78,18 +106,26 @@ const ManageCategories = ()=>{
                 <tbody>
                     {categories.map((category,index)=>{
                         return(
-                            <tr>
+                            <tr key={index}>
                             <th scope="row">{category._id}</th>
                             <td>{category.name}</td>
                             <td>
-                                <button className="btn btn-warning">Edit
-                                </button>
+                            <Link
+                               className="btn btn-success"
+                              to={`/admin/categories/${category._id}`}
+                            >
+                                <span className="">Update</span>
+                            </Link>
                             </td>
                             <td>
-                                <button className="btn btn-danger" onClick={(id)=>{
-                                    const yesOrNo = window.confirm(`Delete category`)
+                                <button 
+                                    className="btn btn-danger" 
+                                    id={category._id} 
+                                    onClick={(event)=>{
+
+                                    const yesOrNo = window.confirm(`Delete category with id : ${event.target.id}`)
                                     if(yesOrNo)
-                                    deleteCategoryCall(id)
+                                    deleteCategoryCall(event.target.id)
                                 }}>
                                     Delete
                                 </button>

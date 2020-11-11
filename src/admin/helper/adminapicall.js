@@ -45,7 +45,7 @@ export const updateCategory = (token,category,categoryId) => {
 }
 
 export const deleteCategory = (token,categoryId) => {
-    return fetch(`${API}/categories/:${categoryId}`,{
+    return fetch(`${API}/categories/${categoryId}`,{
         method:"DELETE",
         headers : {
             Accept:"application/json",
@@ -124,7 +124,7 @@ export const updateProduct = (token,product,productId) => {
 }
 
 export const deleteProduct = (token,productId) => {
-    return fetch(`${API}/products/:${productId}`,{
+    return fetch(`${API}/products/${productId}`,{
         method:"DELETE",
         headers : {
             Accept:"application/json",
