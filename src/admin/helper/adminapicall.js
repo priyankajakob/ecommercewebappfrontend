@@ -28,6 +28,16 @@ export const listCategories = () => {
     .catch((err)=>{return {error:"Issue connecting to server"}})
 }
 
+export const getOneCategory = (categoryId) => {
+    return fetch(`${API}/categories/${categoryId}`,{
+        method:"GET"
+    })
+    .then((response)=>{
+        return response.json()
+    })
+    .catch((err)=>{return {error:"Issue connecting to server"}})
+}
+
 export const updateCategory = (token,category,categoryId) => {
     return fetch(`${API}/categories/${categoryId}`,{
         method:"PUT",
