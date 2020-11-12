@@ -13,7 +13,7 @@ const AdminDashBoard = ()=>{
                 <h4 className = "card-header bg-dark text-white">Admin Navigation</h4>
                 <ul className = "list-group">
                     <li className="list-group-item">
-                        <Link to="/admin/create/category" className = "nav-link text-success">
+                        <Link to="/admin/category" className = "nav-link text-success">
                             Create Category
                         </Link>
                     </li>
@@ -25,7 +25,7 @@ const AdminDashBoard = ()=>{
                     </li> */}
 
                     <li className="list-group-item">
-                        <Link to="/admin/create/product" className = "nav-link text-success">
+                        <Link to="/admin/product" className = "nav-link text-success">
                             Create Product
                         </Link>
                     </li>
