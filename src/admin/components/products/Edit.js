@@ -183,9 +183,8 @@ const errorMessage = () => {
           onChange={handleChange}
           className="form-control"
           name="category"
-          value={productCategory}
+          // value={productCategory}
         >
-          {console.log(productCategory)}
           {categories.map((categ,index)=>{
             return(
             <option key={index} value={categ._id}>{categ.name}</option>
