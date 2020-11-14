@@ -4,7 +4,10 @@ import '../styles.css'
 import Base from './Base'
 import Card from './Card'
 
+
 import {loadItemsFromCart} from './helper/cartHelper'
+
+import StripeCheckoutLocal from './paymentgateways/stripe/StripeCheckout'
 
 export default function Cart(){
 
@@ -51,7 +54,12 @@ export default function Cart(){
         <Base title="Cart Page" description = "Ready to check out!">
              <div className="row text-center">
                   <div className = "col-6">{loadAllProducts()}</div>
-                  <div className = "col-6">{loadCheckOut()}</div>
+                  {/* <div className = "col-6">{loadCheckOut()}</div> */}
+                  <StripeCheckoutLocal
+                    products = {cart}
+                    setReload = {setReload}
+                    reload = {reload}
+                  />
              </div>
         </Base>
 
