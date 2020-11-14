@@ -3,17 +3,17 @@ import '../styles.css'
 
 import Base from './Base'
 import Card from './Card'
-import { listProducts } from "../admin/helper/adminapicall";
+import { getAllProducts } from "./helper/coreapicalls";
 
 // import { API } from '../backend.js'
 
 export default function Home(){
 
         const [products, setProducts] = useState([]);
-        const [error,setError]=useState("")
+        const [error,setError]=useState(false)
       
-        const preload = () => {
-          listProducts().then(data => {
+        const preloadProducts = () => {
+          getAllProducts().then(data => {
             if (data.error) {
               setError(data.error)
             } else {
@@ -24,21 +24,22 @@ export default function Home(){
         };
       
         useEffect(() => {
-          preload();
+          preloadProducts();
         }, []);
 
     return(
         <Base title="Home Page" description = "Grab your favourite tee soon!!">
              <div className="row text-center">
-            {products.map((prod,index)=>{
-                return(
-                        <div key={index} className="col-4">
-                            <Card product={prod}/>
-                        </div>
-                )
-            })}
+              <div className = "row">
+                {products.map((prod,index)=>{
+                  return(
+                    <div key={index} className="col-4 mb-4">
+                      <Card product={prod}/>
+                    </div>
+                  )
+                })}
+              </div>
              </div>
-            
         </Base>
 
     )
