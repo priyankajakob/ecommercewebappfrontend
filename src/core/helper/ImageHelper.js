@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {API} from '../backend.js'
+import {API} from '../../backend'
 
 const ImageHelper = ({ product })=>{
     const imageURL = product ? `${API}/products/photo/${product._id}`:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
