@@ -7,7 +7,7 @@ import Card from './Card'
 
 import {loadItemsFromCart} from './helper/cartHelper'
 
-import StripeCheckoutLocal from './paymentgateways/stripe/StripeCheckout'
+// import StripeCheckoutLocal from './paymentgateways/stripe/StripeCheckout'
 
 export default function Cart(){
 
@@ -54,12 +54,17 @@ export default function Cart(){
         <Base title="Cart Page" description = "Ready to check out!">
              <div className="row text-center">
                   <div className = "col-6">{loadAllProducts()}</div>
+                  {/* Initial */}
                   {/* <div className = "col-6">{loadCheckOut()}</div> */}
-                  <StripeCheckoutLocal
+
+                  {/* Stripe Checkout code */}
+                  {/* <StripeCheckoutLocal
                     products = {cart}
                     setReload = {setReload}
                     reload = {reload}
-                  />
+                  /> */}
+
+                  
              </div>
         </Base>
 

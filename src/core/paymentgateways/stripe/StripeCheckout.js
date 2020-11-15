@@ -1,3 +1,4 @@
+//Will be using paypal in the project hereafter, hence, this component is not used but kept for reference.
 import React,{useState,useEffect} from 'react'
 
 import {isAuthenticated} from '../../../auth/helper/index'
@@ -61,7 +62,7 @@ const StripeCheckoutLocal = ({products,setReload,reload})=>{
             <StripeCheckout
                 strikeKey="pk_test"
                 token={makePayment}
-                amount={getFinalPrice()}
+                amount={getFinalPrice()*100}
                 name="Buy Tshirts"
                 shippingAddress
                 billingAddress
