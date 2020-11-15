@@ -3,7 +3,7 @@ import '../styles.css'
 
 import Base from './Base'
 import Card from './Card'
-
+import PaymentB from './paymentgateways/braintree/PaymentB'
 
 import {loadItemsFromCart} from './helper/cartHelper'
 
@@ -33,6 +33,7 @@ export default function Cart(){
                             removeFromCart={true}
                             reload={reload}
                             setReload={setReload}
+                            productCountInOrder = {prod.count}
                             />
                             <br/>
                         </div>
@@ -53,7 +54,12 @@ export default function Cart(){
     return(
         <Base title="Cart Page" description = "Ready to check out!">
              <div className="row text-center">
-                  <div className = "col-6">{loadAllProducts()}</div>
+                  <div className = "col-6">{cart.length>0 ? loadAllProducts() : (
+                      <h3>
+                         Your Cart is Empty
+                      </h3>
+                  )}</div>
+                  
                   {/* Initial */}
                   {/* <div className = "col-6">{loadCheckOut()}</div> */}
 
@@ -64,7 +70,14 @@ export default function Cart(){
                     reload = {reload}
                   /> */}
 
-                  
+                <div className = "col-6">
+                        <PaymentB
+                            products = {cart}
+                            reload = {reload}
+                            setReload = {setReload}
+                        />
+                </div>
+
              </div>
         </Base>
 

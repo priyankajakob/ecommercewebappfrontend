@@ -61,8 +61,11 @@ export const removeItemFromCart = (productId)=>{
 }
 
 export const cartEmpty = (next)=>{
+    let cart=[] //to have cart still in localstorage
     if(typeof window !== undefined){
         localStorage.removeItem("cart")
+        localStorage.setItem('cart',JSON.stringify(cart)) //to have cart still in localstorage
         next()
+
     }
 }

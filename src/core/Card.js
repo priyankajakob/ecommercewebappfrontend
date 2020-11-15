@@ -9,7 +9,8 @@ const Card = (
         addToCart=true,
         removeFromCart=false,
         reload,
-        setReload 
+        setReload,
+        productCountInOrder=undefined 
 
         //I don't think below if really required as reload works
         // reload = undefined,
@@ -73,6 +74,9 @@ const Card = (
     return (
       <div className="card text-white bg-dark border border-info ">
         <div className="card-header lead">{cardDescription}</div>
+        <div>{productCountInOrder && (
+            <p className="text-info font-weight-bold">Product Count : {productCountInOrder}</p>
+        )}</div>
         <div className="card-body">
           {getARedirect(redirect)}
             <ImageHelper product={product}/>
